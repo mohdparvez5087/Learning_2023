@@ -7,8 +7,8 @@ struct Student
     float marks;
 };
 typedef struct Student Student;
-
-
+void initStudent(Student *, int, char *, float);
+void displayStudent(Student *);
 int main()
 {
     int size = 2;
@@ -18,17 +18,12 @@ int main()
     Student arr[size]; // == Employee e1; Employee e2;
     printf("Scanning\n");
     int i;
-    Student *ptr;
     for (i = 0; i < size; i++)
     {
-        scanf("%d %s %f", &rolln , n , &mark);
-       // scanf("%s", n);
-       // scanf("%f", &mark);
-        arr[i].rollno=rolln;
-        //*ptr=&arr[i];
-        strcpy(arr[i].name,n);
-        arr[i].marks=mark;
-        
+        scanf("%d", &rolln);
+        scanf("%s", n);
+        scanf("%f", &mark);
+        initStudent(&arr[i], rolln, n, mark);
     }
    printf("Displaying\n");
     for (i = 0; i < size; i++)
@@ -40,4 +35,10 @@ int main()
     }
     return 0;
 }
-
+void initStudent(Student *ptr, int rolln, char *nptr, float mark)
+{
+    // initialize structure's members
+    ptr->rollno = rolln;
+    ptr->marks = mark;
+    strcpy(ptr->name, nptr);
+}
